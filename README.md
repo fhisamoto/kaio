@@ -16,7 +16,7 @@ or using docker-compose
     $ docker-compose run --rm server
 ```
 
-likewise for execute the tests
+likewise to execute the tests
 
 ```shell
     $ mvn clean test
