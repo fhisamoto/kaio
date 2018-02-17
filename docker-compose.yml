@@ -1,13 +1,16 @@
 version: '2.1'
 services:
-  mvn:
+  mvn: &mvn_default
     image: maven:3.5-jdk-8
     working_dir: /src
-    ports:
-      - 8080:8080
     volumes:
       - .:/src
       - ~/.m2:/root/.m2
+
+  server:
+    <<: *mvn_default
+    ports:
+      - 8080:8080
     command: |
       mvn clean spring-boot:run
 
