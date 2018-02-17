@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  mvn:
+    image: maven:3.5-jdk-8
+    working_dir: /src
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/src
+      - ~/.m2:/root/.m2
+    command: |
+      mvn clean spring-boot:run
+
+volumes:
+  m2:
+    driver: local
