@@ -1,5 +1,7 @@
 package mars.app;
 
+import java.util.Objects;
+
 class OutOfBoundsException extends Exception {
     public OutOfBoundsException() {
         super();
@@ -50,5 +52,20 @@ public class Position {
     @Override
     public String toString() {
         return String.format("(%d,%d,%s)", x, y, direction.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x &&
+                y == position.y &&
+                direction == position.direction;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, direction);
     }
 }
